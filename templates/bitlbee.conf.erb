@@ -4,13 +4,13 @@ User = <%= user %>
 <% unless run_mode == 'Inetd' -%>
 DaemonInterface = <%= bind_address %>
 DaemonPort = <%= bind_port %>
-<% end %>
+<% end -%>
 AuthMode = <%= auth_mode %>
-<% if auth_mode == 'Closed' and auth_passwd != :undef -%>AuthPassword = <%= auth_passwd %><% end -%>
+<% if auth_mode == 'Closed' and auth_passwd != false %>AuthPassword = <%= auth_passwd %><% end %>
 OperPassword = <%= oper_passwd %>
-<% unless hostname == :undef -%>HostName = <%= hostname %><% end -%>
-<% unless config_dir == :undef -%>ConfigDir = <%= config_dir %><% end -%>
-<% unless ping_interval == :undef -%>PingInterval = <%= ping_interval %><% end -%>
-<% unless ping_timeout == :undef -%>PingTimeOut = <%= ping_timeout %><% end -%>
+<% if hostname -%>HostName = <%= hostname %><% end -%>
+<% if config_dir -%>ConfigDir = <%= config_dir %><% end -%>
+<% if ping_interval -%>PingInterval = <%= ping_interval %><% end -%>
+<% if ping_timeout -%>PingTimeOut = <%= ping_timeout %><% end -%>
 
 [defaults]
